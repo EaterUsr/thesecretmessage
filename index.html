@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>thesecretmessage</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+  <body>
+    <main>
+      <section id="image">
+        <p aria-label="write here your secret message" contenteditable=true id="text-container"></p>
+        <canvas id="canvas"></canvas>
+      </section>
+    </main>
+    <section class="download-container">
+      <select id="ext">
+        <option value="webp">webp</option>
+        <option value="jpeg">jpeg</option>
+      </select>
+      <button id="download" title="download"><img src="/src/img/download.svg" alt="download"></button>
+    </section>
+  </body>
+</html>

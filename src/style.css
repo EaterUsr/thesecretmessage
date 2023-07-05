@@ -1,0 +1,136 @@
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: system-ui, sans-serif;
+  color-scheme: light dark;
+}
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr min-content;
+}
+:root {
+  --color-input: #D1C741;
+  --color-input-darken: #8A8321;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: clamp(24em, 100vw - 9em, 40em);
+  margin: 0 auto;
+  flex-direction: column;
+}
+#message {
+  resize: none;
+  position: relative;
+  font-size: 1.4em;
+  padding: 0.1em;
+  border: none;
+  border-bottom: 1px solid var(--color-input);
+  background: transparent;
+  outline: none;
+  color: var(--color-input);
+  margin-right: auto;
+  width: 17em;
+}
+#message:placeholder-shown {
+  border-color: #888;
+}
+.edit {
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+#hide {
+  margin-right: auto;
+  accent-color: var(--color-input);
+}
+#hide:checked ~ #message {
+  visibility: hidden;
+}
+#image {
+  position: relative;
+  width: 90%;
+  aspect-ratio: 2/1;
+}
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+#text-container:focus ~ canvas, #text-container:hover ~ canvas, canvas:hover {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#text-container {
+  outline: none;
+  font-size: 2rem;
+  font-weight: 600;
+  background: #bbb;
+  color: #969696;
+  height: 100%;
+  width: 100%;
+  padding: 0.3rem;
+  line-height: 1;
+  position: relative;
+}
+#text-container::before {
+  content: "write here your secret message";
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: #a5a5a5;
+}
+#text-container:empty::before {
+  opacity: 1;
+}
+#ext {
+  cursor: pointer;
+  background-color: var(--color-input);
+  color: #000;
+  font-size: 1.5em;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem; 
+  padding: 0.1rem 0.8rem;
+}
+#download {
+  cursor: pointer;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  background-color: var(--color-input);
+  border: none;
+  outline: none;
+}
+#download > img {
+  padding: 0.1rem 0.8rem;
+  height: 80%;
+}
+#download:hover, #ext:hover {
+  background-color: var(--color-input-darken);
+}
+#download:focus, #ext:focus {
+  outline: 0.1rem var(--color-input) solid;
+  outline-offset: 0.2rem;
+}
+.download-container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 0.7em;
+  margin-left: 1em;
+  width: 10em; 
+  gap: 0.3rem;
+}
