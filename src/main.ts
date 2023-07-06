@@ -12,14 +12,14 @@ let prevInput: null | string = null;
 
 const { drawPixels } = new ComlinkWorker<typeof import("./worker")>(new URL("./worker", import.meta.url));
 
-canvas.height = textContainer.getBoundingClientRect().height;
-canvas.width = textContainer.getBoundingClientRect().width;
-
 textContainer.addEventListener("input", () => (lastChange = Date.now()));
 
 setInterval(async () => {
   if (Date.now() - lastChange < 1000 || prevInput === textContainer.innerHTML) return;
   prevInput = textContainer.innerHTML;
+
+  canvas.height = textContainer.getBoundingClientRect().height;
+  canvas.width = textContainer.getBoundingClientRect().width;
 
   const canvasData = await html2canvas(textContainer);
   const ctxData = canvasData.getContext("2d") as CanvasRenderingContext2D;
