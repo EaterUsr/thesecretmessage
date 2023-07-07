@@ -1,2 +1,2 @@
 # thesecretmessage
-Write a secret message in an image.
+Write a secret message in a picture.

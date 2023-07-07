@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>thesecretmessage</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+    <link href="/fonts/Inter.ttf" rel="stylesheet">
     <script type="module" src="/src/main.ts" defer></script>
+    <meta name="description" content="Write a secret message in a picture.">
   </head>
   <body>
     <main>
@@ -14,13 +16,49 @@
         <p aria-label="write here your secret message" contenteditable=true id="text-container"></p>
         <canvas id="canvas"></canvas>
       </section>
-    </main>
+      <section class="config">
+      <div class="slider">
+         <label for="text size">text size</label>
+         <input type="range" id="text-size" name="text size" min="1" max="4" value="2" step="any">
+      </div>
+      <div class="slider">
+         <label for="text size">contrast</label>
+         <input type="range" id="contrast" name="contrast" min="127" max="170" value="150" step="any">
+      </div>
+      <div class="text-align">
+        <input type="radio" name="text-align" id="left" checked></input>
+        <label for="left" title="text align left">
+          <svg width="158" height="106" viewBox="0 0 158 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 5H153" stroke-width="10" stroke-linecap="round"/>
+            <path d="M5 53H113.319" stroke-width="10" stroke-linecap="round"/>
+            <path d="M5 101H73.6377" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </label>
+        <input type="radio" name="text-align" id="center" title="text align center"></input>
+        <label for="center" title="text align center">
+          <svg width="158" height="106" viewBox="0 0 158 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.75128 5H152.751" stroke-width="10" stroke-linecap="round"/>
+            <path d="M24.0556 53H132.374" stroke-width="10" stroke-linecap="round"/>
+            <path d="M44.4324 101H113.07" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </label>
+        <input type="radio" name="text-align" id="right"></input>
+        <label for="right" title="text align right">
+          <svg width="158" height="106" viewBox="0 0 158 106" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.75159 5H152.752" stroke-width="10" stroke-linecap="round"/>
+            <path d="M43.5521 53.6956L151.871 53.6957" stroke-width="10" stroke-linecap="round"/>
+            <path d="M83.2333 101L151.871 101" stroke-width="10" stroke-linecap="round"/>
+          </svg>
+        </label>
+      </div>
+    </section>
+   </main>
     <section class="download-container">
-      <select id="ext">
+      <select id="ext" title="format">
         <option value="webp">webp</option>
         <option value="jpeg">jpeg</option>
       </select>
-      <button id="download" title="download"><img src="/src/img/download.svg" alt="download"></button>
+      <button id="download" title="download"><img src="/img/download.svg" alt="download"></button>
     </section>
   </body>
 </html>

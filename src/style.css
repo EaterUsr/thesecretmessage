@@ -1,62 +1,34 @@
+:root {
+  --clr-primary: #D1C741;
+  --clr-primary-dark: #8A8321;
+  --clr-secondary: #444;
+  --clr-background: #D9D9D9;
+}
 *, *::before, *::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 html {
-  font-family: system-ui, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   color-scheme: light dark;
 }
 body {
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr min-content;
-}
-:root {
-  --color-input: #D1C741;
-  --color-input-darken: #8A8321;
+  background-color: var(--clr-background);
 }
 main {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  width: clamp(24em, 100vw - 9em, 40em);
+  width: clamp(14em, 90%, 60em);
   margin: 0 auto;
-  flex-direction: column;
-}
-#message {
-  resize: none;
-  position: relative;
-  font-size: 1.4em;
-  padding: 0.1em;
-  border: none;
-  border-bottom: 1px solid var(--color-input);
-  background: transparent;
-  outline: none;
-  color: var(--color-input);
-  margin-right: auto;
-  width: 17em;
-}
-#message:placeholder-shown {
-  border-color: #888;
-}
-.edit {
-  width: 75%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2em;
-}
-#hide {
-  margin-right: auto;
-  accent-color: var(--color-input);
-}
-#hide:checked ~ #message {
-  visibility: hidden;
 }
 #image {
   position: relative;
-  width: 90%;
+  width: clamp(10rem, 30em, 100%);
   aspect-ratio: 2/1;
 }
 canvas {
@@ -73,11 +45,15 @@ canvas {
   pointer-events: none;
 }
 #text-container {
+  --text-align: left;
+  --text-size: 1;
+  --contrast: 150;
   outline: none;
-  font-size: 2rem;
+  text-align: var(--text-align);
+  font-size: calc(clamp(1rem, 4vw, 2rem) * var(--text-size));
   font-weight: 600;
   background: #bbb;
-  color: #969696;
+  color: rgb(var(--contrast), var(--contrast), var(--contrast));
   height: 100%;
   width: 100%;
   padding: 0.3rem;
@@ -86,6 +62,8 @@ canvas {
 }
 #text-container::before {
   content: "write here your secret message";
+  text-align: left;
+  font-size: clamp(1rem, 4vw, 2rem);
   position: absolute;
   top: 0;
   left: 0;
@@ -97,7 +75,7 @@ canvas {
 }
 #ext {
   cursor: pointer;
-  background-color: var(--color-input);
+  background-color: var(--clr-primary);
   color: #000;
   font-size: 1.5em;
   font-weight: 600;
@@ -111,26 +89,97 @@ canvas {
   cursor: pointer;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  background-color: var(--color-input);
+  background-color: var(--clr-primary);
   border: none;
-  outline: none;
 }
 #download > img {
   padding: 0.1rem 0.8rem;
   height: 80%;
 }
 #download:hover, #ext:hover {
-  background-color: var(--color-input-darken);
+  background-color: var(--clr-primary-dark);
 }
 #download:focus, #ext:focus {
-  outline: 0.1rem var(--color-input) solid;
-  outline-offset: 0.2rem;
+  outline: 0.1rem var(--clr-primary) solid;
+  outline-offset: 0.1rem;
 }
 .download-container {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr min-content;
   margin-bottom: 0.7em;
   margin-left: 1em;
-  width: 10em; 
+  width: 10em;
   gap: 0.3rem;
+}
+.slider > input {
+  accent-color: var(--clr-primary);
+}
+.slider {
+  width: min-content;
+}
+.config {
+  padding: 0.5rem 2rem;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8em;
+}
+.slider > input:focus-visible {
+  outline: 0.15rem solid var(--clr-primary);
+  outline-offset: 0.1rem;
+}
+.text-align > label > svg {
+  stroke: var(--clr-secondary);
+  height: 1rem;
+  width: auto;
+}
+.text-align {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-align > label {
+  --border-radius: 0.5rem;
+  cursor: pointer;
+  border-radius: 0;
+  border: 0.1rem solid #000a;
+  padding: 0.6rem;
+  background-color: #0001;
+}
+.text-align > label:hover {
+  background-color: #0009;
+}
+.text-align > input:focus-visible + label {
+  border: 0.1rem solid var(--clr-primary);
+}
+.text-align > input:first-of-type + label {
+  border-top-left-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+.text-align > input:last-of-type + label {
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+}
+.text-align > input {
+  width: 0;
+}
+.text-align > input:checked + label > svg {
+  stroke: var(--clr-primary) !important;
+}
+@media (max-width: 35rem) {
+  main {
+    flex-direction: column;
+  }
+  .download-container {
+    margin: 0.7em auto;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --clr-secondary: #B5B5B5;
+    --clr-background: #383835;
+  }
 }
