@@ -53,4 +53,5 @@ contrastSlider.addEventListener("input", () => {
 });
 textAlignContainer.addEventListener("input", e => {
   textContainer.style.setProperty("--text-align", (e.srcElement as HTMLElement).id);
+  prevInput = null;
 });
