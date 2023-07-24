@@ -29,7 +29,7 @@ main {
 #image {
   position: relative;
   width: clamp(10rem, 30em, 100%);
-  aspect-ratio: 2/1;
+  height: clamp(5rem, 15em, 100%);
 }
 canvas {
   position: absolute;
