@@ -28,8 +28,8 @@ main {
 }
 #image {
   position: relative;
-  width: clamp(10rem, 30em, 100%);
-  height: clamp(5rem, 15em, 100%);
+  width: 30em;
+  height: 15em;
 }
 canvas {
   position: absolute;
@@ -59,6 +59,7 @@ canvas {
   padding: 0.3rem;
   line-height: 1;
   position: relative;
+  overflow: hidden;
 }
 #text-container::before {
   content: "write here your secret message";
@@ -169,7 +170,17 @@ canvas {
 .text-align > input:checked + label > svg {
   stroke: var(--clr-primary) !important;
 }
+@media (max-width: 45rem) {
+  #image {
+    width: 20em;
+    height: 10em;
+  }
+}
 @media (max-width: 35rem) {
+  #image {
+    width: 30em;
+    height: 15em;
+  }
   main {
     flex-direction: column;
   }
