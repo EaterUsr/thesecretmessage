@@ -30,7 +30,10 @@ async function loadImage() {
   const canvasData = await html2canvas(textContainer);
   const ctxData = canvasData.getContext("2d") as CanvasRenderingContext2D;
 
-  const imageData = await drawPixels(ctxData.getImageData(0, 0, canvas.width, canvas.height));
+  const imageData = await drawPixels(
+    ctxData.getImageData(0, 0, canvas.width, canvas.height),
+    Number(contrastSlider.value)
+  );
   const imageBitmap = await createImageBitmap(imageData, 0, 0, canvas.width, canvas.height);
   ctx.drawImage(imageBitmap, 0, 0);
 }
@@ -48,7 +51,6 @@ textSizeSlider.addEventListener("input", () => {
   prevInput = null;
 });
 contrastSlider.addEventListener("input", () => {
-  textContainer.style.setProperty("--contrast", `${contrastSlider.value}`);
   prevInput = null;
 });
 textAlignContainer.addEventListener("input", e => {

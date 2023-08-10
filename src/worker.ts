@@ -1,4 +1,4 @@
-export function drawPixels(imageData: ImageData) {
+export function drawPixels(imageData: ImageData, contrast: number) {
   const { width, height } = imageData;
   const output = new ImageData(width, height);
   const { data } = output;
@@ -10,13 +10,15 @@ export function drawPixels(imageData: ImageData) {
       const green = imageData.data[index + 1];
       const blue = imageData.data[index + 2];
 
+      const gray = Math.max(Math.floor((red + green + blue) / 3), contrast);
+
       const color1 = Math.random();
       const color2 = Math.random();
       const color3 = 1 - color1 - color2;
 
-      data[index] = color1 * red;
-      data[index + 1] = color2 * green;
-      data[index + 2] = color3 * blue;
+      data[index] = color1 * gray;
+      data[index + 1] = color2 * gray;
+      data[index + 2] = color3 * gray;
       data[index + 3] = 255;
     }
   }
