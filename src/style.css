@@ -1,8 +1,14 @@
 :root {
-  --clr-primary: #D1C741;
-  --clr-primary-dark: #8A8321;
-  --clr-secondary: #444;
-  --clr-background: #D9D9D9;
+  --text: #252303;
+  --background: #ffffff;
+  --primary: #D1C741;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #eaeae6;
+    --background: #080807;
+    --primary: #D1C741;
+  }
 }
 *, *::before, *::after {
   padding: 0;
@@ -12,12 +18,13 @@
 html {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   color-scheme: light dark;
+  color: var(--text);
 }
 body {
   height: 100vh;
   display: grid;
   grid-template-rows: 1fr min-content;
-  background-color: var(--clr-background);
+  background: var(--background);
 }
 main {
   display: flex;
@@ -76,7 +83,7 @@ canvas {
 }
 #ext {
   cursor: pointer;
-  background-color: var(--clr-primary);
+  background-color: var(--primary);
   color: #000;
   font-size: 1.5em;
   font-weight: 600;
@@ -90,7 +97,7 @@ canvas {
   cursor: pointer;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  background-color: var(--clr-primary);
+  background-color: var(--primary);
   border: none;
 }
 #download > img {
@@ -98,10 +105,10 @@ canvas {
   height: 80%;
 }
 #download:hover, #ext:hover {
-  background-color: var(--clr-primary-dark);
+  background-image: linear-gradient(rgb(0 0 0 / 0.3), rgb(0 0 0 / 0.3)), linear-gradient(var(--primary), var(--primary));
 }
 #download:focus, #ext:focus {
-  outline: 0.1rem var(--clr-primary) solid;
+  outline: 0.1rem var(--primary) solid;
   outline-offset: 0.1rem;
 }
 .download-container {
@@ -113,7 +120,7 @@ canvas {
   gap: 0.3rem;
 }
 .slider > input {
-  accent-color: var(--clr-primary);
+  accent-color: var(--primary);
 }
 .slider {
   width: min-content;
@@ -128,11 +135,11 @@ canvas {
   gap: 0.8em;
 }
 .slider > input:focus-visible {
-  outline: 0.15rem solid var(--clr-primary);
+  outline: 0.15rem solid var(--primary);
   outline-offset: 0.1rem;
 }
 .text-align > label > svg {
-  stroke: var(--clr-secondary);
+  stroke: var(--primary);
   height: 1rem;
   width: auto;
 }
@@ -146,15 +153,15 @@ canvas {
   --border-radius: 0.5rem;
   cursor: pointer;
   border-radius: 0;
-  border: 0.1rem solid #000a;
+  border: 0.1rem solid #444a;
   padding: 0.6rem;
-  background-color: #0001;
+  background: #4441;
 }
 .text-align > label:hover {
-  background-color: #0009;
+  background-color: #5559;
 }
 .text-align > input:focus-visible + label {
-  border: 0.1rem solid var(--clr-primary);
+  border: 0.1rem solid var(--primary);
 }
 .text-align > input:first-of-type + label {
   border-top-left-radius: var(--border-radius);
@@ -168,7 +175,7 @@ canvas {
   width: 0;
 }
 .text-align > input:checked + label > svg {
-  stroke: var(--clr-primary) !important;
+  stroke: var(--primary) !important;
 }
 @media (max-width: 45rem) {
   #image {
@@ -188,9 +195,4 @@ canvas {
     margin: 0.7em auto;
   }
 }
-@media (prefers-color-scheme: dark) {
-  :root {
-    --clr-secondary: #B5B5B5;
-    --clr-background: #383835;
-  }
-}
+
